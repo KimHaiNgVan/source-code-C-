@@ -1,0 +1,124 @@
+#include<iostream>
+using namespace std;
+struct node{
+    node* link;
+    int info;
+};
+node *first;
+void init(){
+    first=NULL;    
+}
+void insertFirst(int x)
+{
+    node *p=new node;
+    p->info=x;
+    p->link=first;
+    first=p;
+}
+void printList(){
+    node *p =first;
+    while(p!=NULL)
+    {
+    cout<<p->info<<endl;
+    p=p->link;
+    }
+}
+node* search(int x)
+{
+    node * p=first;
+    while(p!=NULL)
+    {
+        if((p->info)==x)
+            return p;
+        p=p->link;
+    }
+    return p;
+}
+int deleteFirst(){
+    node *p=first;
+   if(first!=NULL)
+   {
+    p=p->link;
+    first=p;
+    return 1;
+    }
+    else return 0;
+}
+
+void insertLast(int x){
+    node *p=first;
+    node *q=new node;
+    q->link=NULL;
+    q->info=x;
+    if(first!=NULL)
+    {
+        while(p->link!=NULL)
+        {
+            p=p->link;
+        }
+        p->link=q;
+    }
+    else{
+        first=q;
+    }
+}
+int deleteLast(){
+    if(first!=NULL)
+    {
+    node *q,*p;
+    p=first;
+    q=NULL;
+    while(p->link!=NULL){
+        q=p;
+        p=p->link;
+    }
+    if(p==first){
+    first=NULL;
+    }
+    else{
+        q->link=NULL;    
+    }
+    delete p;
+    return 1;
+    }return 0;
+}
+
+void lookFor_Delete(int x){
+    node *p=first;
+    node*q=new node;
+    while(p!=NULL)
+    {
+        if(p->info==x)
+        {
+            q=p;
+        }
+        p=p->link;
+    }
+    delete q;
+}
+
+int main()
+{
+    init();
+    insertFirst(0);
+    insertFirst(1);
+    insertFirst(2);
+    insertFirst(3);
+    insertFirst(4);
+    printList();
+    cout<<"Danh sach ban dau la: \n";
+     if(deleteLast()){
+    cout<<"Danh sach sau khi xoa cuoi la: \n";
+    printList;
+    }
+    else cout<<"Xoa cuoi khong thanh cong\n";
+    printList(); 
+    cout<<"Danh sach sau khi chen cuoi la: \n";
+    insertLast(5);
+    printList();
+   
+    cout<<"Danh sach sau khi tim va xoa: \n";
+    lookFor_Delete(1);
+    printList();
+    return 0;    
+}
