@@ -27,6 +27,7 @@ int menu(){
 		<<"5. IsEmpty\n"
 		<<"6. Convert-HEX-to-Bin.\n"
 		<<"7. Convert-HEX-to-Any.\n"
+		<<"8. Print Stack.\n"
 		<<"0. Quit.\n"
 		<<"===========KET THUC==============\n"
 		<<"Chon [0-7]: ";
@@ -73,13 +74,13 @@ void printSTACK(){
 	while(!isEmpty()){
 		result=pop(x);
 		if(result==1)
-		cout<<x;
+		cout<<x<<"\t";
 	}
 }
 void app(){
 	int choose,phantuthem,phantura,thapphan,any;
 	do{
-	
+		system("cls");
 		choose=menu();
 		
 		switch(choose){
@@ -134,15 +135,18 @@ void app(){
 				cout<<endl;
 				system("pause");
 				break;
-			
+			case 8:
+				printSTACK();
+				cout<<endl;
+				break;
 			default: cout<<"Lua chon khong hop le.\n";
 			return;
-			system("pause");
+			
 		};
+		system("pause");
 	}while(choose!=0);
 }
 int main(){
 	app();
 	return 0;
 }
-
