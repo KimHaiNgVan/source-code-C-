@@ -18,6 +18,7 @@ int insertFirst(int x){
 	node *p=creatNode(x);
 	p->link=first;
 	first=p;
+	return 1;
 }
 void Output(){
 	node *p=first;
@@ -96,7 +97,7 @@ int removeLast(){
 			q->link=NULL;
 		}
 		else 
-			first==NULL;
+			first=NULL;
 			delete p;
 			return 1;
 	}
@@ -104,6 +105,7 @@ int removeLast(){
 }
 int findAndRemove(int x){
 	node *p=first,*q=NULL,*k;
+	int i = 0;
 	while(p!=NULL)
 	{
 		if(p->info==x)
@@ -112,12 +114,28 @@ int findAndRemove(int x){
 			node *z=new node;
 			z=p;
 			q->link=k;
+			p = p->link;
+			delete z;
+			i++;
 		}
-		q=p;
-		p=p->link;
+		else if (p==first && p->info == x) {
+			
+			i++;
+			q = p;
+			p = p->link;
+			removeFirst();
+		}
+		else if (p->link == NULL && p->info == x) {
+			removeLast();
+			i++;
+		}
+		else {
+			q = p;
+			p = p->link;
+		}
+		
 	}
-    
-    return 1;
+    return i;
 }
 bool findMax(int& max){
 	if(first==NULL)
@@ -258,7 +276,6 @@ void remove_any(int vitri)
 	
 }
 void giaiphong_bonho(){
-	
 	while(first!=NULL)
 	{
 		node *p=first;
@@ -276,7 +293,8 @@ int menu(){
 			<<"5. Find.\n"
 			<<"6. Remove First.\n"
 			<<"7. Insert Last.\n"
-			<<"8. Remove Last.\n"			<<"9. Find and Remove.\n"
+			<<"8. Remove Last.\n"			
+			<<"9. Find and Remove.\n"
 			<<"10. Find the Max Element.\n"
 			<<"11. Add Q node after P node.\n"
 			<<"12. Add Q node before P node.\n"
@@ -342,7 +360,7 @@ void app(){
 			case 9:
 				int timxoa;
 				cout<<"Enter the Element: ";cin>>timxoa;
-				if(findAndRemove(timxoa)==1)
+				if(findAndRemove(timxoa)!=0)
 				{
 					cout<<"Find and Remove successfully.\n";
 				}
