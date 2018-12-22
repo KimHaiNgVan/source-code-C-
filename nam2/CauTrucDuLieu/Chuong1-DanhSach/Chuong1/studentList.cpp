@@ -126,7 +126,7 @@ void tim_sv_x(char x[10]) {
 	if (first != NULL) {
 		node *p = first;
 		while (p != NULL) {
-			if (p->info.id == x) {
+			if (strcmp(x,p->info.id)==0) {
 				printAStu(p);
 			}
 			p = p->link;

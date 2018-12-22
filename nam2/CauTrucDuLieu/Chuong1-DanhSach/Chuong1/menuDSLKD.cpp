@@ -1,317 +1,320 @@
 #include<iostream>
 using namespace std;
-struct  node{
-	int info ;
+struct node {
+	int info;
 	node *link;
 };
 node *first;
-void init(){
-	first=NULL;
+void init() {
+	first = NULL;
 }
-node *creatNode(int x){
-	node *p=new node;
-	p->info=x;
-	p->link=NULL;
+node *creatNode(int x) {
+	node *p = new node;
+	p->info = x;
+	p->link = NULL;
 	return p;
 }
-int insertFirst(int x){
-	node *p=creatNode(x);
-	p->link=first;
-	first=p;
-	return 1;
+void insertFirst(int x) {
+	node *p = new node;
+	p->info = x;
+	p->link = first;
+	first = p;
 }
-void Output(){
-	node *p=first;
-	while(p!=NULL){
-		cout<<p->info<<"\t";
-		p=p->link;
+void creatList(int n) {
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >>x;
+		insertFirst(x);
 	}
 }
-void add_q_after_p(int p,int q){
-	if(first==NULL){
-		cout<<"fail to add.\n";
+void Output() {
+	node *p = first;
+	while (p != NULL) {
+		cout << p->info<<"\t";
+		p = p->link;
 	}
-	else{
-		for(node * k=first;k!=NULL;k=k->link){
-			if(k->info==p)
-			{
-				node *h=creatNode(q);
-				node *g=k->link;
-				h->link=g;
-				k->link=h;
-			}
+}
+node *find(int x) {
+	if (first != NULL) {
+		node *p = first;
+		while (p != NULL) {
+			if (p->info == x)
+				return p;
+			p = p->link;
 		}
 	}
+	return NULL;
 }
-int removeFirst(){
-	node * p;
-	p=first;
-	if(p!=NULL){
-		first=first->link;
+int removeFirst() {
+	if (first == NULL)
+		return 0;
+	else {
+		node *p = first;
+		first = first->link;
+		delete p;
+		return 1;
+	}
+}
+int insertLast(int x) {
+	node *p = creatNode(x);
+	if (first == NULL) {
+		first = p;
+		return 1;
+	}
+	else {
+		node *q = first;
+		while (q->link != NULL)
+			q = q->link;
+		q->link = p;
+		return 1;
+	}
+	return 0;
+}
+int removeLast() {
+	if (first != NULL) {
+		node *p = first, *q = NULL;
+		if (p != NULL) {
+			while (p->link != NULL) {
+				q = p;
+				p = p->link;
+			}
+		}
+		
+		if (p != first)
+			q->link = NULL;
+		else first = NULL;
 		delete p;
 		return 1;
 	}
 	return 0;
 }
-node* find(int x){
-	node *p;
-	p=first;
-	while(p!=NULL)
-	{
-		if(p->info==x)
-		return p;
-		p=p->link;
-	}
-	return p;
-}
-int insertLast(int x){
-	node *p=creatNode(x);
-	if(first==NULL)
-		{
-			first=p;
-			return 1;
-		}
-	else{
-		node *q=first;
-		while(q->link!=NULL)
-			q=q->link;
-			q->link=p;
-			return 1;
-	}
-	return 0;
-}
-int removeLast(){
-	if(first!=NULL){	
-		node *p,*q;
-		p=first,q=NULL;
-		if(p!=NULL)
-			{
-				while(p->link!=NULL)
-				{
-					q=p;
-					p=p->link;
-				}
-			
-			}
-		if(p!=first){
-			q->link=NULL;
-		}
-		else 
-			first=NULL;
-			delete p;
-			return 1;
-	}
-	return 0;
-}
-int findAndRemove(int x){
-	node *p=first,*q=NULL,*k;
+int findAndRemove(int x) {
 	int i = 0;
-	while(p!=NULL)
-	{
-		if(p->info==x)
-		{
-			k=p->link;
-			node *z=new node;
-			z=p;
-			q->link=k;
-			p = p->link;
-			delete z;
-			i++;
-		}
-		else if (p==first && p->info == x) {
+	if (first != NULL) {
+		int vitri = 0;
+		for (node *p = first, *q = NULL; p != NULL; q = p, p = p->link) {
+			// 2 cai if nay phai dat dung thu tu, neu khong se khong chay.
+			 if (p->info == x && q == NULL) {
+				i++;
+				node *z = p;
+				p = p->link;
+				first = p;
+				delete z;
+				return 1;
+			 }
+			 else if (p->info == x) {
+				 i++;
+				 node *k = p->link;
+				 q->link = k;
+			 }
 			
-			i++;
-			q = p;
-			p = p->link;
-			removeFirst();
 		}
-		else if (p->link == NULL && p->info == x) {
-			removeLast();
-			i++;
-		}
-		else {
-			q = p;
-			p = p->link;
-		}
-		
 	}
-    return i;
+	return i;
 }
-bool findMax(int& max){
-	if(first==NULL)
-	{
-		return false;
-	}
-	else{
-		max=first->info;
-		for(node *k=first->link;k!=NULL;k=k->link)
-		{
-			if(max<k->info)
-			max=k->info;
+bool findMax(int &max){
+	if (first != NULL) {
+		node *p = first;
+		max = p->info;
+		while (p != NULL) {
+			if (p->info > max) {
+				max = p->info;
+			}
+			p = p->link;
 		}
 		return true;
 	}
-	
-	
+	return false ;
 }
-
-void add_q_before_p(int tim,int them){
-
-//	for(node *k=first;k!=NULL;k=k->link)
-//	{
-//		if(first->info==tim)
-//		{
-//			insertFirst(them);
-//		}
-//		else if(k->info==tim)
-//		{
-//			node *q=creatNode(them);
-//			q->link=k;
-//			g->link=q;
-//		}
-//		g=k;
-//	}
-	node *g=new node;
-	node *k=first;
-	while(k!=NULL)
-	{
-			if(first->info==tim)
-		{
-			insertFirst(them);
+void add_q_after_p(int giatritim, int giatrithem) {
+	if(first !=NULL){
+		
+		node *p = first;
+		int dem = 0;
+		while (p != NULL) {
+			if (p->info == giatritim) {
+				node *q = creatNode(giatrithem);
+				node *k = p->link;
+				q->link = k;
+				p->link = q;
+				dem++;
+			}
+			p = p->link;
 		}
-		else if(k->info==tim)
-		{
-			node *q=creatNode(them);
-			q->link=k;
-			g->link=q;
+		if (dem != 0) cout << "Them thanh cong.\n";
+		else cout << "Khong them duoc.\n";
+	}
+	else cout << "Khong tim duoc phan tu can tim.\n";
+}
+void add_q_before_p(int giatritim, int giatrithem) {
+	if (first != NULL) {
+		node *k = NULL, *p = first;
+		int dem = 0;
+		while (p != NULL) {
+			if (p==first && p->info==giatritim) {
+				insertFirst(giatrithem);
+				dem++;
+			}
+			else if (p->info == giatritim) {
+				node* q = creatNode(giatrithem);
+				k->link = q;
+				q->link = p;
+				
+				dem++;
+			}
+			k = p;
+			p = p->link;
 		}
-		g=k;
-		k=k->link;
+		if (dem != 0) cout << "Them thanh cong.\n";
+		else cout << "Khong them duoc.\n";
 	}
+	else cout << "Khong tim duoc phan tu can tim.\n";
 }
-void creatList(int n){
-	cout<<"Nhap gia tri cac phan tu Node: "<<endl;
-	for(int i=0;i<n;i++)
-	{
-		int x;
-		cin>>x;
-		creatNode(x);
-		insertFirst(x);
-	}
-}
-void add_q_any(int x,int vitri)
+void add_q_any(int giatrithem, int vitri)
 {
-	int n=0;
-	for(node *k=first;k!=NULL;k=k->link)
+	int soluongNode = 0;
+	for (node *k = first; k != NULL; k = k->link)
 	{
-		n++;
+		soluongNode++;
 	}
-	node *p=first;
-	node *q =creatNode(x);
-	if(p==NULL){
-		insertFirst(x);
+	node *p = first;
+	node *q = creatNode(giatrithem);
+	if (p == NULL || vitri == 0) {
+		insertFirst(giatrithem);
 	}
-	else if(vitri >n)
+	else if (vitri == soluongNode)
 	{
-		cout<<"Vi tri khong hop le.\n";
+		insertLast(giatrithem);
 	}
-	else{
-		int i=1;
-		while(i<vitri-1)
+	else if (vitri > soluongNode || vitri < 0) {
+		cout << "Vi tri can them khong hop le.\n";
+	}
+	else {
+		int vitrihientai = 0;// cho con tro P chay den truoc vi tri roi them node Q sau node P.
+		while (vitrihientai < vitri-1)
 		{
-			p=p->link;
-			i++;
+			p = p->link;
+			vitrihientai++;
 		}
-		node *h=p->link;
-		q->link=h;
-		p->link=q;
-	}
-	
-	
-}
-void remove_q_after_p(int tim){
-	node *p=first;
-	while(p->link!=NULL)
-	{
-		p=p->link;
-	}
-	if(first==NULL||first->link==NULL||p->info==tim)
-	{
-		cout<<"Xoa khong thanh cong.\n";
-	}
-	else{
-		for(node *k=first;k!=NULL;k=k->link)
-		{
-			if(k->info==tim)
-			{
-				node *g=k->link;
-				k->link=g->link;
-				delete g;
-			}
-		}
+		node *h = p->link;
+		q->link = h;
+		p->link = q;
 	}
 }
-void remove_any(int vitri)
-{	
-	if(vitri==1)
-	{
-		removeFirst();
-		return;
-	}
-	else{
-		int vt=1;
-		for(node *k=first;k!=NULL;k=k->link)
-		{
-			if(vt==vitri-1)
-			{
-				node *p=k->link;
-				node *h=p->link;
-				k->link=h;
-				delete p;
+void remove_q_after_p(int tim) {
+	if (first != NULL) {
+		int dem = 0;
+		node *p = first;
+		while (p != NULL) {
+			if (p->info == tim && p->link == NULL) {
+				cout << "Khong con phan tu phia sau.\n";
+				return;
 			}
-			vt++;
+			if (p->info == tim) {
+				node *q = p->link;
+				node *k = q->link;
+				p->link = k;
+				dem++;
+				delete q;
+			}
 			
+			p = p->link;
 		}
+		if (dem == 0)cout << "Khong xoa duoc phan tu Q nao.\n";
+		else cout << "Xoa duoc " << dem << " phan tu.\n";
 	}
-	
+	else cout << "Khong co phan tu nao de xoa.\n";
 }
-void giaiphong_bonho(){
-	while(first!=NULL)
-	{
-		node *p=first;
-		first=first->link;
+void remove_any(int vitrixoa) {
+	if(first !=NULL){
+		int soluongNode = 0;
+		for (node *k = first; k != NULL; k = k->link) {
+			soluongNode++;
+		}
+		node *p = first;
+		if (vitrixoa == 0) {
+			removeFirst();
+			cout << "Xoa thanh cong.\n";
+		}
+		else if (soluongNode == vitrixoa + 1) {
+			removeLast();
+			cout << "Xoa thanh cong.\n";
+		}
+		else if (vitrixoa>=0 && vitrixoa < soluongNode){
+			int vitrihientai = 0;
+			while (p != NULL) {
+				if (vitrihientai == vitrixoa - 1) {
+					node *q = p->link;
+					node *z = q->link;
+					p->link = z;
+					delete q;
+				}
+				p = p->link;
+				vitrihientai++;
+			}
+			cout << "Xoa thanh cong.\n";
+		}
+		else cout << "Vi tri xoa khong hop le.\n";
+	}
+	else cout << "Khong co phan tu de xoa.\n";
+}
+void giaiphong_bonho() {
+	while (first != NULL) {
+		node *p = first;
+		first = first->link;
 		delete p;
 	}
 }
-int menu(){
+void  doi_2node(int x, int y) {
+	if (first != NULL)
+	{
+		node *p = first;
+		node *a = creatNode(x);
+		node *b = creatNode(y);
+		while (p != NULL) {
+			if (p->info == x) {
+				p->info = b->info;
+			}
+			else if (p->info == y) {
+				p->info = a->info;
+			}
+			p = p->link;
+		}
+	}
+	else cout << "Doi cho khong thanh cong.\n";
+}
+int menu_chuongI_DSLKD(){
 	int choose;
 		cout<<"============START============\n"
-			<<"1. Init.\n"
-			<<"2. Insert First.\n"
-			<<"3. Creat a List with N elements.\n"
-			<<"4. Output.\n"
-			<<"5. Find.\n"
-			<<"6. Remove First.\n"
-			<<"7. Insert Last.\n"
-			<<"8. Remove Last.\n"			
-			<<"9. Find and Remove.\n"
-			<<"10. Find the Max Element.\n"
-			<<"11. Add Q node after P node.\n"
-			<<"12. Add Q node before P node.\n"
-			<<"13. Add Q at anywhere.\n"
-			<<"14. Remove Q after P.\n"
-			<<"15. Remove anyWhere.\n"
+			<<"1. Khoi tao.\n"
+			<<"2. Them dau.\n"
+			<<"3.Tao danh sach co N phan tu.\n"
+			<<"4. Xuat.\n"
+			<<"5. Tim Kiem.\n"
+			<<"6. Xoa Dau.\n"
+			<<"7. Them Cuoi.\n"
+			<<"8. Xoa Cuoi.\n"			
+			<<"9. Tim kiem va Xoa.(Con Khuyet Diem, Xoa vi tri Dau )\n"
+			<<"10. Tim Lon nhat.\n"
+			<<"11. Them Q sau P.\n"
+			<<"12. Them Q truoc P.\n"
+			<<"13.Them Q tai bat ky.\n"
+			<<"14. Xoa Q sau P.\n"
+			<<"15. Xoa vi tri bat ky.\n"
+			<< "16. Giai phong bo nho. \n"
+			<<"17. Doi cho 2 node bat ki.\n"
 			<<"0. Quit.\n"
 			<<"============END============\n";
 	cout<<"Chon [0-8]: ";
 	cin>>choose;
 	return choose;
 }
-void app(){
+void app_chuongI_DSLKD(){
 	int choose,x,timkiem, themcuoi, giatrithem,giatritim;
+	bool kq10;
 	do{
 		system("cls");
-		choose=menu();
+		choose= menu_chuongI_DSLKD();
 		switch(choose){
 			case 0:cout<<"Quit successfully.\n";break;
 			case 1:init();
@@ -366,49 +369,52 @@ void app(){
 				}
 				else cout<<"Fail to find and remove.\n";
 				break;
-			case 16:
-				giaiphong_bonho();
+			case 10:
+				int max;
+				kq10 = findMax(max);
+				if (kq10 == true)
+					cout << "Max la: " << max << endl;
+				else cout << "Fail to find the MAX element.\n";
+				break; 
+			case 11:
+				cout << "Nhap vao gia tri can them: "; cin >> giatrithem;
+				cout << "Them gia tri tren dang sau phan tu: "; cin >> giatritim;
+				add_q_after_p(giatritim, giatrithem);
 				break;
-			case 15:
-				int vitrixoa;
-				cout<<"Vi tri muon xoa: ";cin>>vitrixoa;
-				remove_any(vitrixoa);
+			case 12:
+				int giatrithem, giatritim;
+				cout << "Enter the Added Element: "; cin >> giatrithem;
+				cout << "Enter the Found Element: "; cin >> giatritim;
+				add_q_before_p(giatritim, giatrithem);
+				break;
+			case 13:
+				int vitri, them;
+				cout << "Nhap vao gia tri node them: "; cin >> them;
+				cout << "Nhap vao vi tri can them: "; cin >> vitri;
+				add_q_any(them, vitri);
 				break;
 			case 14:
 				int tim;
-				cout<<"Gia tri node xoa: ";cin>>tim;
+				cout << "Gia tri node xoa: "; cin >> tim;
 				remove_q_after_p(tim);
 				break;
-			case 13:
-				int vitri,them;
-				cout<<"Nhap vao gia tri node them: ";cin>>them;
-				cout<<"Nhap vao vi tri can them: ";cin>>vitri;
-				add_q_any(them,vitri);
+			case 15:
+				int vitrixoa;
+				cout << "Vi tri muon xoa: "; cin >> vitrixoa;
+				remove_any(vitrixoa);
 				break;
-			case 12:
-				int giatrithem,giatritim;
-				cout<<"Enter the Added Element: ";cin>>giatrithem;
-				cout<<"Enter the Found Element: ";cin>>giatritim;
-				add_q_before_p(giatritim,giatrithem);
+			case 16:
+				giaiphong_bonho();
 				break;
-			case 11:
-				cout<<"Nhap vao gia tri can them: ";cin>>giatrithem;
-				cout<<"Them gia tri tren dang sau phan tu: ";cin>>giatritim;
-				add_q_after_p(giatritim,giatrithem);
-				break;
-			case 10:
-				int max;
-				bool kq=findMax(max);
-				if(kq==true)
-				cout<<"Max la: "<<max<<endl;
-				else cout<<"Fail to find the MAX element.\n";
-				break;
+			case 17: 
+				int x17, y17;
+				cout << "Nhap vao gia tri 2 node: "; cin >> x17 >> y17;
+				doi_2node(x17, y17);
 		};
 		system("pause");
 	}while(choose != 0);
 }
 int main(){
-	app();
-	
+	app_chuongI_DSLKD();
 	return 0;
 }
