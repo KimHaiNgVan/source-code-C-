@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chuong2_cayNhiPhan.cpp">
+    <ClCompile Include="btree_kimhai_.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
