@@ -1,20 +1,38 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 int main()
 {
-	const int M = 10;
+	const int M = 100;
 	int a[M];
-	for (int i = 0; i < M; i++);
+	double n;
+	int vitri, x;
+	cout << "nhap n: ";
+	cin >> n;
+	for (int i = 0; i < n; i++)
 	{
-		cin >> a[i];
+		a[i] = rand() % 10;
+		cout << "so phan tu trong mang: " << a[i] << endl;
 	}
-	for (int i = 0; i < M; i++)
+	cout << "nhap gia tri can them: ";
+	cin >> x;
+	cout << "nhap vi tri can them: ";
+	cin >> vitri;
+	cout << "mang sau khi them: " << endl;
+	
+	if (vitri >= 0 && vitri < n)
 	{
-		cin >> a[i];
+		cout << n << endl;
+		n++;
+		for (int i = n; i > vitri; i--)
+			a[i] = a[i - 1];
+		a[vitri] = x;
+		
+		cout << n << endl;
 	}
-	for (int j = 0; j < M; j++);
-	{
-		cout << a[j] << "\t";
-	}
+	
+	for (int i = 0; i < n; i++)
+		cout << "so phan tu trong mang: " << a[i] << endl;
+	system("pause");
 	return 0;
 }

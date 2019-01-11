@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 using namespace std;
 struct node {
 	int info;
@@ -21,10 +21,10 @@ void insertFirst(int x) {
 	first = p;
 }
 void creatList(int n) {
+	int a[100];
 	for (int i = 0; i < n; i++) {
-		int x;
-		cin >>x;
-		insertFirst(x);
+		cin >>a[i];
+		insertFirst(a[i]);
 	}
 }
 void Output() {
@@ -88,26 +88,34 @@ int removeLast() {
 	}
 	return 0;
 }
-int findAndRemove(int x) {
+int findAndRemove(int x)  {
 	int i = 0;
 	if (first != NULL) {
 		int vitri = 0;
-		for (node *p = first, *q = NULL; p != NULL; q = p, p = p->link) {
+		for (node *p = first, *q = NULL; p != NULL;) {
 			// 2 cai if nay phai dat dung thu tu, neu khong se khong chay.
-			 if (p->info == x && q == NULL) {
-				i++;
-				node *z = p;
-				p = p->link;
-				first = p;
-				delete z;
-				return 1;
+			  if (p->info == x && q == NULL) {
+				 i++;
+				/* node *z = p;
+				 p = p->link;
+				 first = p;
+				 delete z;*/
+				 removeFirst();
+				 p = first;
+				//cả 2 cách đêu dc
 			 }
 			 else if (p->info == x) {
 				 i++;
-				 node *k = p->link;
-				 q->link = k;
-			 }
+				 node *k = p;
+				 p = p->link;
+				 q->link = p;
+				 delete k;
 			
+			 }
+			 else {
+				  q = p;
+				  p = p->link;
+			  }
 		}
 	}
 	return i;
@@ -145,7 +153,7 @@ void add_q_after_p(int giatritim, int giatrithem) {
 		else cout << "Khong them duoc.\n";
 	}
 	else cout << "Khong tim duoc phan tu can tim.\n";
-}
+}// tao nhieu phan tu Q bang cach dat ham Create trong if
 void add_q_before_p(int giatritim, int giatrithem) {
 	if (first != NULL) {
 		node *k = NULL, *p = first;
@@ -169,7 +177,7 @@ void add_q_before_p(int giatritim, int giatrithem) {
 		else cout << "Khong them duoc.\n";
 	}
 	else cout << "Khong tim duoc phan tu can tim.\n";
-}
+}//có 2TH: Them Q ở vi tri ĐẦU TIÊN va Q ở các chỗ CÒN LẠI
 void add_q_any(int giatrithem, int vitri)
 {
 	int soluongNode = 0;
@@ -226,37 +234,33 @@ void remove_q_after_p(int tim) {
 	else cout << "Khong co phan tu nao de xoa.\n";
 }
 void remove_any(int vitrixoa) {
-	if(first !=NULL){
+	if (first != NULL) {
 		int soluongNode = 0;
 		for (node *k = first; k != NULL; k = k->link) {
 			soluongNode++;
 		}
-		node *p = first;
-		if (vitrixoa == 0) {
-			removeFirst();
-			cout << "Xoa thanh cong.\n";
-		}
-		else if (soluongNode == vitrixoa + 1) {
-			removeLast();
-			cout << "Xoa thanh cong.\n";
-		}
-		else if (vitrixoa>=0 && vitrixoa < soluongNode){
-			int vitrihientai = 0;
-			while (p != NULL) {
-				if (vitrihientai == vitrixoa - 1) {
-					node *q = p->link;
-					node *z = q->link;
-					p->link = z;
-					delete q;
-				}
-				p = p->link;
-				vitrihientai++;
+		if (vitrixoa>=1 && vitrixoa <= soluongNode)
+		{
+			if (vitrixoa == 1) {
+				removeFirst();
+				cout << "Xoa thanh cong.\n";
 			}
-			cout << "Xoa thanh cong.\n";
+			else
+			{
+				node *p = first;
+				node *q = NULL;
+				for (int vitri = 1; vitri < vitrixoa; vitri++)
+				{
+					q = p;
+					p = p->link;
+				}
+				node *z = p;
+				p = p->link;
+				q->link = p;
+				delete z;
+			}
 		}
-		else cout << "Vi tri xoa khong hop le.\n";
 	}
-	else cout << "Khong co phan tu de xoa.\n";
 }
 void giaiphong_bonho() {
 	while (first != NULL) {
@@ -265,24 +269,29 @@ void giaiphong_bonho() {
 		delete p;
 	}
 }
-void  doi_2node(int x, int y) {
+void swap(int &a, int &b) {
+	int tam = a;
+	a = b;
+	b = tam;
+}
+void  doi_2node(int &x, int &y) {
 	if (first != NULL)
 	{
-		node *p = first;
-		node *a = creatNode(x);
-		node *b = creatNode(y);
-		while (p != NULL) {
-			if (p->info == x) {
-				p->info = b->info;
+		int i= 0;
+		for (node *p = first; p->link != NULL; p = p->link) {
+			for (node *q = p->link; q != NULL; q = q->link) {
+				if ((p->info == x && q->info == y)|| (p->info == y && q->info == x)) {
+					swap(p->info, q->info);
+					i++;
+				}
 			}
-			else if (p->info == y) {
-				p->info = a->info;
-			}
-			p = p->link;
 		}
+		if (i != 0) cout << "Doi cho thanh cong.\n";
+		else cout << "Khong doi cho thanh cong.\n";
 	}
 	else cout << "Doi cho khong thanh cong.\n";
 }
+
 int menu_chuongI_DSLKD(){
 	int choose;
 		cout<<"============START============\n"
@@ -294,7 +303,7 @@ int menu_chuongI_DSLKD(){
 			<<"6. Xoa Dau.\n"
 			<<"7. Them Cuoi.\n"
 			<<"8. Xoa Cuoi.\n"			
-			<<"9. Tim kiem va Xoa.(Con Khuyet Diem, Xoa vi tri Dau )\n"
+			<<"9. Tim kiem va Xoa.(Con khuyet diem, Xoa cuoi)\n"
 			<<"10. Tim Lon nhat.\n"
 			<<"11. Them Q sau P.\n"
 			<<"12. Them Q truoc P.\n"
@@ -418,3 +427,27 @@ int main(){
 	app_chuongI_DSLKD();
 	return 0;
 }
+/*Lưu ý :
+*Hàm add_q_before_p(), findAndRemove() : 
+		_ có 2TH : 
+				 + Q ở vi tri NULL
+				 + Q ở các chỗ CÒN LẠI
+*Hàm add_q_any() : 
+		_ tính sluong Node, 3TH : 
+				+ thêm ĐẦU(insertFirst), 
+				+ thêm CUỐI(insertLast), 
+				+ thêm GIỮA.thêm GIỮA : cho con trỏ P chạy đến while (vt < vitrithem - 1) rồi thêm vào.
+*Hàm remove_q_after_p() : 
+        _có 2TH : 
+				+ node P nằm ở CUỐI,  
+				+ node P nằm ở các vi tri khác.
+*Hàm remove_any() : 
+		_tính sluong Node, 
+		_3TH : 
+				+xóa ĐẦU(removeFirst), 
+				+xóa Cuối(removeLast), 
+				+xóa GIỮA(cho con trỏ chạy đến(vitrixoa - 1) rồi xóa như bth)
+*Hàm đổi 2node : 
+		_if ((p->info == x && q->info == y) || (p->info == y && q->info == x)) 
+		thì đổi như hàm SWAP bình thường.
+*/

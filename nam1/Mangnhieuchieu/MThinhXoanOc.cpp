@@ -64,4 +64,5 @@ void main()
 				cout << a[i][j]<<"\t";
 			cout << endl;
 	}
+	system("pause");
 }

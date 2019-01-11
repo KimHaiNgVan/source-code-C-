@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="menuDSLKD.cpp">
+    <ClCompile Include="chuong2_cayNhiPhan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
