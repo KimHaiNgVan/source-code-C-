@@ -1,4 +1,3 @@
-﻿  btree_kimhai_.cpp
-c:\users\kim hải\desktop\c++\source-code-c-\nam2\cautrucdulieu\chuong1-danhsach\chuong1\btree_kimhai_.cpp(82): warning C4715: 'delete_NhiPhan': not all control paths return a value
-c:\users\kim hải\desktop\c++\source-code-c-\nam2\cautrucdulieu\chuong1-danhsach\chuong1\btree_kimhai_.cpp(113): warning C4717: 'xuat_node2con_NhiPhan': recursive on all control paths, function will cause runtime stack overflow
+﻿  CSDL_SapXep.cpp
+c:\users\kim hải\desktop\c++\source-code-c-\nam2\cautrucdulieu\chuong1-danhsach\chuong1\csdl_sapxep.cpp(20): warning C4101: 'j': unreferenced local variable
   Project1.vcxproj -> C:\Users\Kim Hải\Desktop\C++\source-code-C-\nam2\CauTrucDuLieu\Chuong1-DanhSach\Chuong1\x64\Debug\Project1.exe

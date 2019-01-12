@@ -1,22 +1,22 @@
 #include<iostream>
 using namespace std;
 #define MAX 100
-void input(int a[MAX], int n) {
+void input_sapxep_timkiem(int a[MAX], int n) {
 	for (int i = 0; i < n; i++) {
 		cout << "a[" << i << "]: "; cin >> a[i];
 	}
 }
-void output(int a[MAX], int n) {
+void output_sapxep_timkiem(int a[MAX], int n) {
 	for (int i = 0; i < n; i++) {
 		cout<<"a["<<i<<"]: "<<a[i]<<endl;
 	}
 }
-void swap(int &a, int &b) {
+void swap_sapxep_timkiem(int &a, int &b) {
 	int tam = a;
 	a = b;
 	b = tam;
 }
-void Selection_Sort(int a[MAX], int n) {
+void Selection_Sort_sapxep_timkiem(int a[MAX], int n) {
 	int i, j, vt;
 	for (i = 0; i < n-1; i++) {
 		vt = i;
@@ -25,10 +25,10 @@ void Selection_Sort(int a[MAX], int n) {
 				vt = j;
 		}
 		if (vt != i)
-			swap(a[vt], a[i]);
+			swap_sapxep_timkiem(a[vt], a[i]);
 	}
 }
-void Interchange_Sort(int a[MAX], int n) {
+void Interchange_Sort_sapxep_timkiem(int a[MAX], int n) {
 	for (int i = 0; i < n-1; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (a[j] < a[i])
@@ -36,7 +36,7 @@ void Interchange_Sort(int a[MAX], int n) {
 		}
 	}
 }
-void Insertion_Sort(int a[MAX], int n) {
+void Insertion_Sort_sapxep_timkiem(int a[MAX], int n) {
 	int j, tam;
 	for (int i = 1; i < n; i++) {
 		tam = a[i];
@@ -48,7 +48,7 @@ void Insertion_Sort(int a[MAX], int n) {
 		a[j + 1] = tam;
 	}
 }
-void Bubble_Sort(int a[MAX], int n) {
+void Bubble_Sort_sapxep_timkiem(int a[MAX], int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = n - 1; j > i; j--) {
 			if (a[j] < a[j - 1])
@@ -56,7 +56,7 @@ void Bubble_Sort(int a[MAX], int n) {
 		}
 	}
 }
-int timkiem_tuantu(int a[], int n, int x) {
+int timkiem_tuantu_sapxep_timkiem(int a[], int n, int x) {
 	int i = 0;
 	while (i < n && a[i] != x) {
 		i++;
@@ -65,7 +65,7 @@ int timkiem_tuantu(int a[], int n, int x) {
 		return i;
 	return -1;
 }
-int timkiem_nhiphan(int a[], int n, int x) {
+int timkiem_nhiphan_sapxep_timkiem(int a[], int n, int x) {
 	int mid, left, right;
 	left = 0, right = n - 1;
 	while (left <= right) {
@@ -109,35 +109,35 @@ void app_sapxep_timkiem() {
 						cout << "Sai roi. Nhap lai.\n";
 					}
 				} while (soluong_phantu<0 || soluong_phantu>MAX);
-				input(a, soluong_phantu);
+				input_sapxep_timkiem(a, soluong_phantu);
 				break;
 			case 2: 
-				output(a, soluong_phantu);
+				output_sapxep_timkiem(a, soluong_phantu);
 				break;
 			case 3: 
-				Selection_Sort(a,soluong_phantu);
+				Selection_Sort_sapxep_timkiem(a,soluong_phantu);
 					break;
 			case 4:
-				Interchange_Sort(a, soluong_phantu);
+				Interchange_Sort_sapxep_timkiem(a, soluong_phantu);
 				break;
 			case 5:
-				Insertion_Sort(a, soluong_phantu);
+				Insertion_Sort_sapxep_timkiem(a, soluong_phantu);
 				break;
 			case 6:
-				Bubble_Sort(a, soluong_phantu);
+				Bubble_Sort_sapxep_timkiem(a, soluong_phantu);
 				break;
 			case 7: 
 				int timkiem7;
 				cout << "Gia tri phan tu can tim la: "; cin >> timkiem7;
-				if (timkiem_tuantu(a, soluong_phantu, timkiem7) != -1)
-					cout << "Tim thay phan tu o vi tri thu " << timkiem_tuantu(a, soluong_phantu, timkiem7) << " trong mang.\n";
+				if (timkiem_tuantu_sapxep_timkiem(a, soluong_phantu, timkiem7) != -1)
+					cout << "Tim thay phan tu o vi tri thu " << timkiem_tuantu_sapxep_timkiem(a, soluong_phantu, timkiem7) << " trong mang.\n";
 				else cout << "Khong tim thay phan tu " << timkiem7 << " trong mang.\n";
 				break;
 			case 8:
 				int timkiem8;
 				cout << "Gia tri phan tu can tim la: "; cin >> timkiem8;
-				if (timkiem_nhiphan(a, soluong_phantu, timkiem8) != -1)
-					cout << "Tim thay phan tu o vi tri thu " << timkiem_nhiphan(a, soluong_phantu, timkiem8) << " trong mang.\n";
+				if (timkiem_nhiphan_sapxep_timkiem(a, soluong_phantu, timkiem8) != -1)
+					cout << "Tim thay phan tu o vi tri thu " << timkiem_nhiphan_sapxep_timkiem(a, soluong_phantu, timkiem8) << " trong mang.\n";
 				else cout << "Khong tim thay phan tu " << timkiem7 << " trong mang.\n";
 				break;
 		default:cout << "Lua chon khong hop le.\n";

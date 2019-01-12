@@ -4,37 +4,37 @@ struct node {
 	int info;
 	node *link;
 };
-node *first;
-void init() {
+
+void init_DSLK(node *first) {
 	first = NULL;
 }
-node *creatNode(int x) {
+node *creatNode_DSLK(node *first, int x) {
 	node *p = new node;
 	p->info = x;
 	p->link = NULL;
 	return p;
 }
-void insertFirst(int x) {
+void insertFirst_DSLK(node *& first, int x) {
 	node *p = new node;
 	p->info = x;
 	p->link = first;
 	first = p;
 }
-void creatList(int n) {
+void creatList_DSLK(node *& first, int n) {
 	int a[100];
 	for (int i = 0; i < n; i++) {
 		cin >>a[i];
-		insertFirst(a[i]);
+		insertFirst_DSLK(first, a[i]);
 	}
 }
-void Output() {
+void Output_DSLK(node *& first) {
 	node *p = first;
 	while (p != NULL) {
 		cout << p->info<<"\t";
 		p = p->link;
 	}
 }
-node *find(int x) {
+node *find_DSLK(node *& first, int x) {
 	if (first != NULL) {
 		node *p = first;
 		while (p != NULL) {
@@ -45,7 +45,7 @@ node *find(int x) {
 	}
 	return NULL;
 }
-int removeFirst() {
+int removeFirst_DSLK(node *& first) {
 	if (first == NULL)
 		return 0;
 	else {
@@ -55,8 +55,8 @@ int removeFirst() {
 		return 1;
 	}
 }
-int insertLast(int x) {
-	node *p = creatNode(x);
+int insertLast_DSLK(node *& first, int x) {
+	node *p = creatNode_DSLK(first, x);
 	if (first == NULL) {
 		first = p;
 		return 1;
@@ -70,7 +70,7 @@ int insertLast(int x) {
 	}
 	return 0;
 }
-int removeLast() {
+int removeLast_DSLK(node *& first) {
 	if (first != NULL) {
 		node *p = first, *q = NULL;
 		if (p != NULL) {
@@ -88,7 +88,7 @@ int removeLast() {
 	}
 	return 0;
 }
-int findAndRemove(int x)  {
+int findAndRemove_DSLK(node *first, int x)  {
 	int i = 0;
 	if (first != NULL) {
 		int vitri = 0;
@@ -100,7 +100,7 @@ int findAndRemove(int x)  {
 				 p = p->link;
 				 first = p;
 				 delete z;*/
-				 removeFirst();
+				 removeFirst_DSLK(first );
 				 p = first;
 				//cả 2 cách đêu dc
 			 }
@@ -120,7 +120,7 @@ int findAndRemove(int x)  {
 	}
 	return i;
 }
-bool findMax(int &max){
+bool findMax_DSLK(node *first, int &max){
 	if (first != NULL) {
 		node *p = first;
 		max = p->info;
@@ -134,14 +134,14 @@ bool findMax(int &max){
 	}
 	return false ;
 }
-void add_q_after_p(int giatritim, int giatrithem) {
+void add_q_after_p_DSLK(node *first, int giatritim, int giatrithem) {
 	if(first !=NULL){
 		
 		node *p = first;
 		int dem = 0;
 		while (p != NULL) {
 			if (p->info == giatritim) {
-				node *q = creatNode(giatrithem);
+				node *q = creatNode_DSLK(first, giatrithem);
 				node *k = p->link;
 				q->link = k;
 				p->link = q;
@@ -154,17 +154,17 @@ void add_q_after_p(int giatritim, int giatrithem) {
 	}
 	else cout << "Khong tim duoc phan tu can tim.\n";
 }// tao nhieu phan tu Q bang cach dat ham Create trong if
-void add_q_before_p(int giatritim, int giatrithem) {
+void add_q_before_p_DSLK(node *first, int giatritim, int giatrithem) {
 	if (first != NULL) {
 		node *k = NULL, *p = first;
 		int dem = 0;
 		while (p != NULL) {
 			if (p==first && p->info==giatritim) {
-				insertFirst(giatrithem);
+				insertFirst_DSLK(first, giatrithem);
 				dem++;
 			}
 			else if (p->info == giatritim) {
-				node* q = creatNode(giatrithem);
+				node* q = creatNode_DSLK(first, giatrithem);
 				k->link = q;
 				q->link = p;
 				
@@ -178,7 +178,7 @@ void add_q_before_p(int giatritim, int giatrithem) {
 	}
 	else cout << "Khong tim duoc phan tu can tim.\n";
 }//có 2TH: Them Q ở vi tri ĐẦU TIÊN va Q ở các chỗ CÒN LẠI
-void add_q_any(int giatrithem, int vitri)
+void add_q_any_DSLK(node *first, int giatrithem, int vitri)
 {
 	int soluongNode = 0;
 	for (node *k = first; k != NULL; k = k->link)
@@ -186,13 +186,13 @@ void add_q_any(int giatrithem, int vitri)
 		soluongNode++;
 	}
 	node *p = first;
-	node *q = creatNode(giatrithem);
+	node *q = creatNode_DSLK(first, giatrithem);
 	if (p == NULL || vitri == 0) {
-		insertFirst(giatrithem);
+		insertFirst_DSLK(first, giatrithem);
 	}
 	else if (vitri == soluongNode)
 	{
-		insertLast(giatrithem);
+		insertLast_DSLK(first, giatrithem);
 	}
 	else if (vitri > soluongNode || vitri < 0) {
 		cout << "Vi tri can them khong hop le.\n";
@@ -209,7 +209,7 @@ void add_q_any(int giatrithem, int vitri)
 		p->link = q;
 	}
 }
-void remove_q_after_p(int tim) {
+void remove_q_after_p_DSLK(node *first, int tim) {
 	if (first != NULL) {
 		int dem = 0;
 		node *p = first;
@@ -233,7 +233,7 @@ void remove_q_after_p(int tim) {
 	}
 	else cout << "Khong co phan tu nao de xoa.\n";
 }
-void remove_any(int vitrixoa) {
+void remove_any_DSLK(node *first, int vitrixoa) {
 	if (first != NULL) {
 		int soluongNode = 0;
 		for (node *k = first; k != NULL; k = k->link) {
@@ -242,7 +242,7 @@ void remove_any(int vitrixoa) {
 		if (vitrixoa>=1 && vitrixoa <= soluongNode)
 		{
 			if (vitrixoa == 1) {
-				removeFirst();
+				removeFirst_DSLK(first);
 				cout << "Xoa thanh cong.\n";
 			}
 			else
@@ -262,26 +262,26 @@ void remove_any(int vitrixoa) {
 		}
 	}
 }
-void giaiphong_bonho() {
+void giaiphong_bonho_DSLK(node *first) {
 	while (first != NULL) {
 		node *p = first;
 		first = first->link;
 		delete p;
 	}
 }
-void swap(int &a, int &b) {
+void swap_DSLK(int &a, int &b) {
 	int tam = a;
 	a = b;
 	b = tam;
 }
-void  doi_2node(int &x, int &y) {
+void  doi_2node_DSLK(node *first, int &x, int &y) {
 	if (first != NULL)
 	{
 		int i= 0;
 		for (node *p = first; p->link != NULL; p = p->link) {
 			for (node *q = p->link; q != NULL; q = q->link) {
 				if ((p->info == x && q->info == y)|| (p->info == y && q->info == x)) {
-					swap(p->info, q->info);
+					swap_DSLK(p->info, q->info);
 					i++;
 				}
 			}
@@ -321,37 +321,40 @@ int menu_chuongI_DSLKD(){
 void app_chuongI_DSLKD(){
 	int choose,x,timkiem, themcuoi, giatrithem,giatritim;
 	bool kq10;
+	node *first=NULL;
+	init_DSLK(first);
 	do{
 		system("cls");
 		choose= menu_chuongI_DSLKD();
 		switch(choose){
 			case 0:cout<<"Quit successfully.\n";break;
-			case 1:init();
+			case 1:init_DSLK(first);
 				cout<<"Khoi tao thanh cong!\n";
 				break;
 			case 2:
 				cout<<"So can chen la: ";
 				cin>>x;
-				insertFirst(x);
+				insertFirst_DSLK(first, x);
 				cout<<"Insert First Successfully.\n";
 				break; 
 			case 3:
 				int n;
 				cout<<"Nhap vao so node: ";cin>>n;
-				creatList(n);
+				creatList_DSLK(first, n);
+				cout<<endl;
 				break;
 			case 4:
-				Output();
-				cout<<endl;
+				Output_DSLK(first);
+				cout << endl;
 				break;
 			case 5:
 				cout<<"So can tim kiem la: ";cin>>timkiem;
-				if(find(timkiem)!=NULL)
+				if(find_DSLK(first,timkiem )!=NULL)
 					cout<<"Find successfully.\n";
 				else cout<<"Fail to Find\n";
 				break;
 			case 6:
-				if(removeFirst()==1)
+				if(removeFirst_DSLK(first )==1)
 					cout<<"Remove first Element successfully.\n";
 				else
 				cout<<"Fail to remove first Element.\n";
@@ -359,12 +362,12 @@ void app_chuongI_DSLKD(){
 			case 7:
 				
 				cout<<"Nhap vao gia tri muon them cuoi: ";cin>>themcuoi;
-				if(insertLast(themcuoi)==1)
+				if(insertLast_DSLK(first, themcuoi)==1)
 					cout<<"Insert Last successfully.\n";
 				else cout<<"Fail to insert Last.\n";
 				break;
 			case 8: 
-				if(removeLast()==1)
+				if(removeLast_DSLK(first )==1)
 				cout<<"Remove Last Element successfully.\n";
 				else 
 					cout<<"Fail to remove last element.\n";
@@ -372,7 +375,7 @@ void app_chuongI_DSLKD(){
 			case 9:
 				int timxoa;
 				cout<<"Enter the Element: ";cin>>timxoa;
-				if(findAndRemove(timxoa)!=0)
+				if(findAndRemove_DSLK(first, timxoa)!=0)
 				{
 					cout<<"Find and Remove successfully.\n";
 				}
@@ -380,7 +383,7 @@ void app_chuongI_DSLKD(){
 				break;
 			case 10:
 				int max;
-				kq10 = findMax(max);
+				kq10 = findMax_DSLK(first, max);
 				if (kq10 == true)
 					cout << "Max la: " << max << endl;
 				else cout << "Fail to find the MAX element.\n";
@@ -388,37 +391,37 @@ void app_chuongI_DSLKD(){
 			case 11:
 				cout << "Nhap vao gia tri can them: "; cin >> giatrithem;
 				cout << "Them gia tri tren dang sau phan tu: "; cin >> giatritim;
-				add_q_after_p(giatritim, giatrithem);
+				add_q_after_p_DSLK(first, giatritim, giatrithem);
 				break;
 			case 12:
 				int giatrithem, giatritim;
 				cout << "Enter the Added Element: "; cin >> giatrithem;
 				cout << "Enter the Found Element: "; cin >> giatritim;
-				add_q_before_p(giatritim, giatrithem);
+				add_q_before_p_DSLK(first, giatritim, giatrithem);
 				break;
 			case 13:
 				int vitri, them;
 				cout << "Nhap vao gia tri node them: "; cin >> them;
 				cout << "Nhap vao vi tri can them: "; cin >> vitri;
-				add_q_any(them, vitri);
+				add_q_any_DSLK(first, them, vitri);
 				break;
 			case 14:
 				int tim;
 				cout << "Gia tri node xoa: "; cin >> tim;
-				remove_q_after_p(tim);
+				remove_q_after_p_DSLK(first, tim);
 				break;
 			case 15:
 				int vitrixoa;
 				cout << "Vi tri muon xoa: "; cin >> vitrixoa;
-				remove_any(vitrixoa);
+				remove_any_DSLK(first, vitrixoa);
 				break;
 			case 16:
-				giaiphong_bonho();
+				giaiphong_bonho_DSLK(first );
 				break;
 			case 17: 
 				int x17, y17;
 				cout << "Nhap vao gia tri 2 node: "; cin >> x17 >> y17;
-				doi_2node(x17, y17);
+				doi_2node_DSLK(first, x17, y17);
 		};
 		system("pause");
 	}while(choose != 0);
@@ -427,27 +430,3 @@ int main(){
 	app_chuongI_DSLKD();
 	return 0;
 }
-/*Lưu ý :
-*Hàm add_q_before_p(), findAndRemove() : 
-		_ có 2TH : 
-				 + Q ở vi tri NULL
-				 + Q ở các chỗ CÒN LẠI
-*Hàm add_q_any() : 
-		_ tính sluong Node, 3TH : 
-				+ thêm ĐẦU(insertFirst), 
-				+ thêm CUỐI(insertLast), 
-				+ thêm GIỮA.thêm GIỮA : cho con trỏ P chạy đến while (vt < vitrithem - 1) rồi thêm vào.
-*Hàm remove_q_after_p() : 
-        _có 2TH : 
-				+ node P nằm ở CUỐI,  
-				+ node P nằm ở các vi tri khác.
-*Hàm remove_any() : 
-		_tính sluong Node, 
-		_3TH : 
-				+xóa ĐẦU(removeFirst), 
-				+xóa Cuối(removeLast), 
-				+xóa GIỮA(cho con trỏ chạy đến(vitrixoa - 1) rồi xóa như bth)
-*Hàm đổi 2node : 
-		_if ((p->info == x && q->info == y) || (p->info == y && q->info == x)) 
-		thì đổi như hàm SWAP bình thường.
-*/
