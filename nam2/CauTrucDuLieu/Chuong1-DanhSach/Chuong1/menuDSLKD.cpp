@@ -4,7 +4,6 @@ struct node {
 	int info;
 	node *link;
 };
-
 void init_DSLK(node *first) {
 	first = NULL;
 }
@@ -291,7 +290,6 @@ void  doi_2node_DSLK(node *first, int &x, int &y) {
 	}
 	else cout << "Doi cho khong thanh cong.\n";
 }
-
 int menu_chuongI_DSLKD(){
 	int choose;
 		cout<<"============START============\n"
@@ -426,7 +424,7 @@ void app_chuongI_DSLKD(){
 		system("pause");
 	}while(choose != 0);
 }
-int main(){
+int main_DSLKD(){
 	app_chuongI_DSLKD();
 	return 0;
 }

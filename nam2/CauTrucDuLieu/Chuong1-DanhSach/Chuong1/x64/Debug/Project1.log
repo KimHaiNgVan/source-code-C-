@@ -1,3 +1,2 @@
-﻿  CSDL_SapXep.cpp
-c:\users\kim hải\desktop\c++\source-code-c-\nam2\cautrucdulieu\chuong1-danhsach\chuong1\csdl_sapxep.cpp(20): warning C4101: 'j': unreferenced local variable
-  Project1.vcxproj -> C:\Users\Kim Hải\Desktop\C++\source-code-C-\nam2\CauTrucDuLieu\Chuong1-DanhSach\Chuong1\x64\Debug\Project1.exe
+﻿  menuDSLKD.cpp
+LINK : fatal error LNK1561: entry point must be defined

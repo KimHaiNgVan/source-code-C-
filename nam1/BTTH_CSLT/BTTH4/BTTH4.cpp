@@ -1,44 +1,52 @@
 ﻿#include<iostream>
 #include<cmath>
 #include<string>
+#include <iomanip>
 using namespace std;
-double tinhKhoangCachHT(int a, int b, int c, int d);
-double tinhBanKinhHT(int a, int b, int c, int d);
-double tinhChuViHT(int a);
-double tinhDienTichHT(int a);
-int tinhLuythua(int a, int b);
-int tinhTong(int a);
-int tinhGiaithua(int a);
-int timSodaonguoc(int a);
-int tinhFibonacci(int a);
-int tinhTrungbinh(int a, int b, int c);
-int timMin(int a, int b, int c);
-int uscln(int a, int b);
-int bscnn(int a, int b);
-int tinhChuViHCN(int a, int b);
-int tinhDienTichHCN(int a, int b);
-int tinhToHop(int a);
-double tinhToHopNChapK(int n, int k);
-void inHCN(int a, int b);
-double tinhCanhhuyen(int a, int b);
-bool laCanhhuyen(int a, int b);
-bool laFibonacci(int a);
-bool laBoiso(int a, int b);
-bool laSNT(int a);
-bool laSHT(int a);
-void inKhung(char c, string a,string b);
-void inThang(int a);
-void inHinhVuong(char c,int a);
-void inPhepToan();
-double tinhNhietDoC(double a);
-double tinhNhietDoF(double a);
-void inBangNhietDof(int a,int b);
-void inBangNhietDoC(int  a, int b);
-void HoanDoi(int &a, int &b);
-void SapXep2(int &a, int &b);
-void SapXep3(int &a, int &b,int &c);
-bool laNamNhuan(int a);
-int main()
+double tinhKhoangCachHT_CSLT(int a, int b, int c, int d);
+double tinhBanKinhHT_CSLT(int a, int b, int c, int d);
+double tinhChuViHT_CSLT(int a);
+double tinhDienTichHT_CSLT(int a);
+int tinhLuythua_CSLT(int a, int b);
+int tinhTong_CSLT(int a);
+int tinhGiaithua_CSLT(int a);
+int timSodaonguoc_CSLT(int a);
+int tinhFibonacci_CSLT(int a);
+int tinhTrungbinh_CSLT(int a, int b, int c);
+int timMin_CSLT(int a, int b, int c);
+int uscln_CSLT(int a, int b);
+int bscnn_CSLT(int a, int b);
+int tinhChuViHCN_CSLT(int a, int b);
+int tinhDienTichHCN_CSLT(int a, int b);
+int tinhToHop_CSLT(int a);
+double tinhToHopNChapK_CSLT(int n, int k);
+void inHCN_CSLT(int a, int b);
+double tinhCanhhuyen_CSLT(int a, int b);
+bool laCanhhuyen_CSLT(int a, int b);
+bool laFibonacci_CSLT(int a);
+bool laBoiso_CSLT(int a, int b);
+bool laSNT_CSLT(int a);
+bool laSHT_CSLT(int a);
+void inKhung_CSLT(char c, string a,string b);
+void inThang_CSLT(int a);
+void inHinhVuong_CSLT(char c,int a);
+void inPhepToan_CSLT();
+double tinhNhietDoC_CSLT(double a);
+double tinhNhietDoF_CSLT(double a);
+void inBangNhietDof_CSLT(int a,int b);
+void inBangNhietDoC_CSLT(int  a, int b);
+void HoanDoi_CSLT(int &a, int &b);
+void SapXep2_CSLT(int &a, int &b);
+void SapXep3_CSLT(int &a, int &b,int &c);
+bool laNamNhuan_CSLT(int a);
+//void tinhTienLuong_CSLT();
+//void tinhBK_CV_Hinhtron_CSLT();
+//void tinhDT_TamGiac_CSLT();
+//void tinhKC_2diem_CSLT();
+//void tinh_Chieudai_String_CSLT();
+//void nhiphan_thapphan_CSLT(); void bang_Cuuchuong_CSLT();
+//void doanSo_tuonglai_CSLT();
+void app_CSLT()
 {
 	int cau;
 	string ten = " ";
@@ -51,7 +59,7 @@ int main()
 	{
 		system("cls");
 	
-		inKhung('*', ten,mssv);
+		inKhung_CSLT('*', ten,mssv);
 		cout <<"########################### MUC LUC ##############################" << endl;
 		cout << "## Nhan 0:Thoat.                                                ##" << endl;
 		cout << "## Nhan 1:Cau 1:Tim so Trung Binh va so Nho Nhat                ##" << endl;
@@ -78,10 +86,46 @@ int main()
 		cout << "## Nhan 22:Cau 22:In Hinh Chu Nhat.                             ##" << endl;
 		cout << "## Nhan 23:Cau 23:Tinh Khoang cach va Ban Kinh cua Hinh tron.   ##" << endl;
 		cout << "## Nhan 24:Cau 24:Tinh Luy Thua n.                              ##" << endl;
+		cout << "## Nhan 25:Cau 25:Tinh Tien luong.                              ##" << endl;
+		cout << "## Nhan 26:Cau 26:Tinh Ban Kinh, Chu vi Hinh tron.              ##" << endl;
+		cout << "## Nhan 27:Cau 27:Tinh Dien tich tam giac bat ky.               ##" << endl;
+		cout << "## Nhan 28:Cau 28:Tinh khoang cach 2 diem.                      ##" << endl;
+		cout << "## Nhan 29:Cau 29:Tinh Chieu dai chuoi.                         ##" << endl;
+		cout << "## Nhan 30:Cau 30:Tinh Nhi phan sang Thap Phan.                 ##" << endl;
+		cout << "## Nhan 31:Cau 31:Tinh Bang Cuu Chuong AxB.                     ##" << endl;
+		cout << "## Nhan 32:Cau 32:Tro choi DOAN so Tuong lai.                   ##" << endl;
 		cout << "########################### MUC LUC ##############################" << endl<<endl<<endl;
 
 		cout << "Nhap vao CAU ban muon lam: ";
 		cin >> cau;
+		/*switch (cau) {
+		case 25:
+				tinhTienLuong_CSLT();
+				break;
+			
+			case 26:
+				tinhBK_CV_Hinhtron_CSLT();
+				break;
+			case  27: 
+				tinhDT_TamGiac_CSLT();
+				break;
+			case  28:
+				tinhKC_2diem_CSLT();
+				break;
+			case  29:
+				tinh_Chieudai_String_CSLT();
+				break;
+			case  30:
+				nhiphan_thapphan_CSLT();
+				break;
+			case  31:
+				bang_Cuuchuong_CSLT();
+				break;
+			case  32:
+				doanSo_tuonglai_CSLT();
+				break;
+		}
+		*/
 		if (cau == 1)
 		{
 			int a = 0, b = 0, c = 0;
@@ -92,8 +136,8 @@ int main()
 				cin >> a >> b >> c;
 				if (a < 0 || b < 0 || c < 0) cout << "Sai roi.";
 			} while (a < 0 || b < 0 || c < 0);
-			cout << "Trung binh 3 so la " << tinhTrungbinh(a, b, c) << endl;
-			cout << "So nho nhat trong 3 so la: " << timMin(a, b, c) << endl ;
+			cout << "Trung binh 3 so la " << tinhTrungbinh_CSLT(a, b, c) << endl;
+			cout << "So nho nhat trong 3 so la: " << timMin_CSLT(a, b, c) << endl ;
 			system("pause");
 		}
 
@@ -110,8 +154,8 @@ int main()
 					cout << "Do dai cac canh khong hop le.Vui long nhap lai: ";
 				}
 			} while (a2 <= 0 || b2 <= 0);
-			if (laCanhhuyen(a2, b2) == true)
-				cout << "Do dai cua canh huyen la: " << tinhCanhhuyen(a2, b2) << endl;
+			if (laCanhhuyen_CSLT(a2, b2) == true)
+				cout << "Do dai cua canh huyen la: " << tinhCanhhuyen_CSLT(a2, b2) << endl;
 			else
 				cout << "Khong phai la 1 tam giac vuong " << endl << endl << endl << endl;
 			system("pause");
@@ -130,7 +174,7 @@ int main()
 					cout << "So khong hop le. ";
 				}
 			} while (x < 0 || y < 0);
-			cout << "Luy thua la: " << tinhLuythua(x, y) << endl << endl << endl << endl;
+			cout << "Luy thua la: " << tinhLuythua_CSLT(x, y) << endl << endl << endl << endl;
 			system("pause");
 		}
 
@@ -148,7 +192,7 @@ int main()
 					cout << "So khong hop le. ";
 				}
 			} while (n < 0);
-			cout << "Tong tu 1 den " << n << " la: " << tinhTong(n) << endl << endl;
+			cout << "Tong tu 1 den " << n << " la: " << tinhTong_CSLT(n) << endl << endl;
 			system("pause");
 		}
 
@@ -166,7 +210,7 @@ int main()
 				}
 			} while (n < 0);
 			cout << "Cau 5:" << endl;;
-			cout << "Giai thua cua " << n << " la: " << tinhGiaithua(n) << endl << endl;
+			cout << "Giai thua cua " << n << " la: " << tinhGiaithua_CSLT(n) << endl << endl;
 			system("pause");
 		}
 
@@ -176,7 +220,7 @@ int main()
 			int sodaonguoc = 0;
 			cout << "Nhap vao so dao nguoc ";
 			cin >> sodaonguoc;
-			cout << "So dao nguoc cua " << sodaonguoc << " la " << timSodaonguoc(sodaonguoc) << endl << endl << endl;
+			cout << "So dao nguoc cua " << sodaonguoc << " la " << timSodaonguoc_CSLT(sodaonguoc) << endl << endl << endl;
 			system("pause");
 		}
 
@@ -188,11 +232,11 @@ int main()
 				cout << "Nhap vao so n la "; cin >> n7;
 				if (n7 < 0) cout << "Sai roi ";
 			} while (n7 < 0);
-			cout << "So Fibonacci thu " << n7 << " la " << tinhFibonacci(n7) << endl;
+			cout << "So Fibonacci thu " << n7 << " la " << tinhFibonacci_CSLT(n7) << endl;
 			cout << "Chuoi " << n7 << " so Fibonacci la: " << endl;
 			for (int i = 1; i <= n7; i++)
 			{
-				cout << laFibonacci(n7) << " ";
+				cout << laFibonacci_CSLT(n7) << " ";
 			}
 			system("pause");
 		}
@@ -209,7 +253,7 @@ int main()
 					if (x8 < 0 || y8 < 0)cout << "Sai roi";
 			} while (x8 < 0 || y8 < 0);
 		
-				cout << boolalpha<< (laBoiso(x8, y8))<<endl;
+				cout << boolalpha<< (laBoiso_CSLT(x8, y8))<<endl;
 			system("pause");
 		}
 		else if (cau == 10)
@@ -224,7 +268,7 @@ int main()
 			} while (x9 < 0);
 			for (int i = 1; i <= x9; i++)
 			{
-				if (laSNT(i) == true)
+				if (laSNT_CSLT(i) == true)
 					cout << i << " ";
 			}
 
@@ -243,7 +287,7 @@ int main()
 			} while (x12 < 0);
 			for (int i = 1; i <= x12; i++)
 			{
-				if (laSHT(i)==true)
+				if (laSHT_CSLT(i)==true)
 					cout << i << " ";
 			}
 			system("pause");
@@ -259,8 +303,8 @@ int main()
 					cout << "Sai roi!";
 			} while (x13 < 0 || y13 < 0);
 
-			cout << "Uoc so chung lon nhat cua " << x13 << " va " << y13 << " la: " <<uscln(x13, y13) << endl;
-			cout << "Boi so chung nho nhat cua " << x13 << " va " << y13 << " la: " <<bscnn(x13, y13) << endl;
+			cout << "Uoc so chung lon nhat cua " << x13 << " va " << y13 << " la: " <<uscln_CSLT(x13, y13) << endl;
+			cout << "Boi so chung nho nhat cua " << x13 << " va " << y13 << " la: " <<bscnn_CSLT(x13, y13) << endl;
 			system("pause");
 		}
 
@@ -269,7 +313,7 @@ int main()
 		{
 			int n14;
 			cout << "Nhap vao so nguyen n: "; cin >> n14;
-			inThang(n14);
+			inThang_CSLT(n14);
 			cout << "\n";
 			system("pause");
 		}
@@ -285,7 +329,7 @@ int main()
 				if (x15 <= 0) 
 					cout << "Khong hop le"<<endl;
 			} while (x15 <= 0);
-			inHinhVuong(c,x15);
+			inHinhVuong_CSLT(c,x15);
 			cout << "\n";
 			system("pause");
 		}
@@ -293,7 +337,7 @@ int main()
 
 		else if (cau == 17)
 		{
-			inPhepToan();	
+			inPhepToan_CSLT();
 			system("pause");
 		}
 		else if (cau == 18)
@@ -301,17 +345,17 @@ int main()
 			int    doc1, dof1, doc2, dof2, doc; double dof;
 			cout << "Nhap vao do C: ";
 			cin >> doc;
-			cout << "Do F la: " << tinhNhietDoF(doc) << endl;
+			cout << "Do F la: " << tinhNhietDoF_CSLT(doc) << endl;
 			cout << "Nhap vao do F: "; 
 			cin >> dof;
-			cout << "Do C la: " << tinhNhietDoC(dof) << endl;
+			cout << "Do C la: " << tinhNhietDoC_CSLT(dof) << endl;
 			cout << "Nhap vao 2 so dau va so cuoi cua do C: "; 
 			cin >> doc1 >> doc2;
-		 inBangNhietDof(doc1 , doc2);
+		 inBangNhietDof_CSLT(doc1 , doc2);
 		 cout << "\n";
 		 cout << "Nhap vao 2 so dau va so cuoi cua do F: ";
 		 cin >> dof1 >> dof2;
-		 inBangNhietDoC(dof1, dof2);
+		 inBangNhietDoC_CSLT(dof1, dof2);
 			system("pause");
 		}
 		else if (cau == 19)
@@ -319,13 +363,13 @@ int main()
 			int a, b, c;
 			cout << "Hoan doi 2 so nguyen a va b ";
 			cin >> a >> b;
-			HoanDoi(a, b);
+			HoanDoi_CSLT(a, b);
 			cout << "\nSap xep 2 so nguyen a va b theo thu tu tang dan: ";
 			cin >> a >> b;
-			SapXep2(a, b);
+			SapXep2_CSLT(a, b);
 			cout << "\nSap xep 3 so nguyen a, b va c theo thu tu tang dan: ";
 			cin >> a >> b >> c;
-			SapXep3(a, b, c);
+			SapXep3_CSLT(a, b, c);
 			system("pause");
 		}
 		
@@ -335,8 +379,8 @@ int main()
 		int nam;
 		cout << "Nhap vao so nam: ";
 		cin >> nam;
-		cout << boolalpha << laNamNhuan(nam)<<endl;
-		if (laNamNhuan(nam)) cout << "Dung roi.Day la nam nhuan."<<endl;
+		cout << boolalpha << laNamNhuan_CSLT(nam)<<endl;
+		if (laNamNhuan_CSLT(nam)) cout << "Dung roi.Day la nam nhuan."<<endl;
 		else cout << "Sai roi. Day khong phai la nam nhuan." << endl;
 		system("pause");
 	}
@@ -349,9 +393,9 @@ int main()
 			cout << "Nhap vao chieu rong va chieu dai cua HCN: "; cin >> a >> b;
 			if (a < 0 || b < 0) cout << "Khong hop le"<<endl;
 		} while (a < 0 || b < 0);
-			cout << "Chu vi cua hinh chu nhat la: " << tinhChuViHCN(a, b) << endl;
-			cout << "Dien tich cua hinh chu nhat la: " << tinhDienTichHCN(a, b) << endl;
-			inHCN(a, b);
+			cout << "Chu vi cua hinh chu nhat la: " << tinhChuViHCN_CSLT(a, b) << endl;
+			cout << "Dien tich cua hinh chu nhat la: " << tinhDienTichHCN_CSLT(a, b) << endl;
+			inHCN_CSLT(a, b);
 			system("pause");
 	}
 	else if (cau == 23)
@@ -367,22 +411,22 @@ int main()
 			}
 		} while (a < 0 || b < 0 || c < 0 || d < 0);
 		cout << "CAUA:"
-			<<"\nKhoang cach cua 2 diem la "<<tinhKhoangCachHT(a,b,c,d)<<endl;
-		cout << "CAUB:\nBan kinh cua Hinh tron la " << tinhBanKinhHT(a, b, c, d) << endl;
+			<<"\nKhoang cach cua 2 diem la "<<tinhKhoangCachHT_CSLT(a,b,c,d)<<endl;
+		cout << "CAUB:\nBan kinh cua Hinh tron la " << tinhBanKinhHT_CSLT(a, b, c, d) << endl;
 		
 		int x;
 		cout << "Nhap vao Ban kinh Hinh tron: "; cin >> x;
-		cout << "Ban Kinh cua hinh tron la: " << tinhChuViHT(x) << endl;
-		cout << "Dien tich cua hinh tron la: " << tinhDienTichHT(x)<<endl;
+		cout << "Ban Kinh cua hinh tron la: " << tinhChuViHT_CSLT(x) << endl;
+		cout << "Dien tich cua hinh tron la: " << tinhDienTichHT_CSLT(x)<<endl;
 		system("pause");
 	}
 	else if (cau == 24)
 	{
 		int n, k;
 		cout << "CAU A:\nNhap vao so nguyen n: "; cin >> n;
-		cout << "To hop "<<n<<"! la: "<<tinhToHop(n)<<endl;
+		cout << "To hop "<<n<<"! la: "<<tinhToHop_CSLT(n)<<endl;
 		cout << "CAU B:\nNhap vao so nguyen n va k: "; cin >> n >> k;
-		cout << "To hop " << n << " chap " << k << " la: " << tinhToHopNChapK(n, k) << endl;
+		cout << "To hop " << n << " chap " << k << " la: " << tinhToHopNChapK_CSLT(n, k) << endl;
 		system("pause");
 	}
 	else if (cau == 0) break;
@@ -393,9 +437,13 @@ int main()
 	}
 		
 	}
+	
+}
+int main_CSLT() {
+	app_CSLT();
 	return 0;
 }
-int tinhLuythua(int a, int b)
+int tinhLuythua_CSLT(int a, int b)
 {
 	int luythua = 1;
 	for (int i = 1; i <= b; i++)
@@ -404,14 +452,14 @@ int tinhLuythua(int a, int b)
 	}
 	return luythua;
 }
-int tinhTong(int a)
+int tinhTong_CSLT(int a)
 {
 	int tong = 0;
 	for (int i = 1; i <= a; i++)
 		tong += i;
 	return tong;
 }
-int tinhGiaithua(int a)
+int tinhGiaithua_CSLT(int a)
 {
 	int giaithua = 1;
 	for (int i = 1; i <= a; i++)
@@ -420,7 +468,7 @@ int tinhGiaithua(int a)
 	}
 	return giaithua;
 }
-int timSodaonguoc(int a)
+int timSodaonguoc_CSLT(int a)
 {
 	int daonguoc = 0; int b;
 	bool soam = false;
@@ -441,7 +489,7 @@ int timSodaonguoc(int a)
 
 	return daonguoc;
 }
-int tinhFibonacci(int a)
+int tinhFibonacci_CSLT(int a)
 {
 	int kq = 0;
 	if (a == 1)
@@ -461,32 +509,32 @@ int tinhFibonacci(int a)
 
 	return kq;
 }
-int tinhTrungbinh(int a, int  b, int  c)
+int tinhTrungbinh_CSLT(int a, int  b, int  c)
 {
 	int trungbinh = 0;
 	trungbinh = (a + b + c) / 3;
 	return trungbinh;
 }
-int timMin(int a, int b, int c)
+int timMin_CSLT(int a, int b, int c)
 {
 	int min = a;
 	if (b < min) min = b;
 	else if (c < min) min = c;
 	return min;
 }
-double tinhCanhhuyen(int a, int b)
+double tinhCanhhuyen_CSLT(int a, int b)
 {
 	double canhhuyen = sqrt(a*a + b*b);
 	return canhhuyen;
 }
-bool laCanhhuyen(int a, int b)
+bool laCanhhuyen_CSLT(int a, int b)
 {
 	bool kq = true;
 	double canhhuyen = sqrt(a*a + b*b);
 	if (canhhuyen*canhhuyen != a*a + b*b) kq = false;
 	return kq;
 }
-bool  laFibonacci(int a)
+bool  laFibonacci_CSLT(int a)
 {
 	int kq;
 	bool Fi = false; 
@@ -503,7 +551,7 @@ bool  laFibonacci(int a)
 	if (Fi = true)
 		return Fi;
 }
-bool laBoiso(int a, int b)
+bool laBoiso_CSLT(int a, int b)
 {
 	bool laBoiso = false;
 	if (b%a == 0)
@@ -511,7 +559,7 @@ bool laBoiso(int a, int b)
 
 	return laBoiso;
 }
-bool laSNT(int a)
+bool laSNT_CSLT(int a)
 {
 	bool SNT = true;
 	for (int i = 2; i <= sqrt(1.0*a); i++)
@@ -523,7 +571,7 @@ bool laSNT(int a)
 
 	return true;
 }
-bool laSHT(int a)
+bool laSHT_CSLT(int a)
 {
 	bool SHT = false;
 	int tong = 0;
@@ -536,7 +584,7 @@ bool laSHT(int a)
 		SHT = true;
 	return SHT;
 }
-void inKhung(char c, string a,string b)
+void inKhung_CSLT(char c, string a,string b)
 {
 	int n = a.length();
 	int m = b.length();
@@ -597,7 +645,7 @@ void inKhung(char c, string a,string b)
 	}
 	return;
 }
-void inThang(int a)
+void inThang_CSLT(int a)
 {
 	switch (a)
 	{
@@ -617,7 +665,7 @@ void inThang(int a)
 	}
 	return;
 }
-int uscln(int a, int b)
+int uscln_CSLT(int a, int b)
 {
 	int uscln = 0;
 	while (a != 0 && b != 0)
@@ -629,7 +677,7 @@ int uscln(int a, int b)
 	else uscln = a;
 	return uscln;
 }
-int bscnn(int a, int b)
+int bscnn_CSLT(int a, int b)
 {
 	int tich = a*b;
 	int uscln = 0, bscnn = 0;
@@ -643,7 +691,7 @@ int bscnn(int a, int b)
 	bscnn = tich / uscln;
 	return bscnn;
 }
-void inHinhVuong(char c,int a)
+void inHinhVuong_CSLT(char c,int a)
 {
 	for (int i = 1; i <= a; i++)
 	{
@@ -655,7 +703,7 @@ void inHinhVuong(char c,int a)
 		cout << endl;
 	}return;
 }
-void  inPhepToan()
+void  inPhepToan_CSLT()
 {
 	while (78)
 	{
@@ -673,19 +721,19 @@ void  inPhepToan()
 	}
 	return;
 }
-double tinhNhietDoC(double a)
+double tinhNhietDoC_CSLT(double a)
 {
 	double doc;
 	doc = ((a - 32) / 1.8);
 	return doc;
 }
-double tinhNhietDoF(double a)
+double tinhNhietDoF_CSLT(double a)
 {
 	double dof;
 	dof = (a *1.8) + 32;
 	return dof;
 }
-void inBangNhietDof(int a, int b)
+void inBangNhietDof_CSLT(int a, int b)
 {
 	double dof;
 	cout << "Do C   Do F" << endl;
@@ -701,7 +749,7 @@ void inBangNhietDof(int a, int b)
 	}
 	return ;
 }
-void inBangNhietDoC(int  a, int b)
+void inBangNhietDoC_CSLT(int  a, int b)
 {
 	double doc;
 	cout << "Do F   Do C."<<endl;
@@ -717,7 +765,7 @@ void inBangNhietDoC(int  a, int b)
 	}
 	return;
 }
-void HoanDoi(int &a, int &b)
+void HoanDoi_CSLT(int &a, int &b)
 {
 	int tam;
 	tam = a;
@@ -726,21 +774,21 @@ void HoanDoi(int &a, int &b)
 	cout << a << " " << b;
 	return;
 }
-void SapXep2(int &a, int &b)
+void SapXep2_CSLT(int &a, int &b)
 {
 	cout << "Theo thu tu tang dan la: ";
 
-	if (b > a) HoanDoi(a, b);
+	if (b > a) HoanDoi_CSLT(a, b);
 	cout << a << " " << b;
 }
-void SapXep3(int &a, int&b, int&c)
+void SapXep3_CSLT(int &a, int&b, int&c)
 {
-	if (a > b) HoanDoi(a, b);
-	if (a > c) HoanDoi(a, c);
-	if (b > c) HoanDoi(b, c);
+	if (a > b) HoanDoi_CSLT(a, b);
+	if (a > c) HoanDoi_CSLT(a, c);
+	if (b > c) HoanDoi_CSLT(b, c);
 	cout << a << " " << b << " " << c;
 }
-bool laNamNhuan(int a)
+bool laNamNhuan_CSLT(int a)
 {
 	bool laNamNhuan = false;
 	if ((a % 4 == 0 && a & 100 != 0) || (a % 400 == 0))
@@ -755,17 +803,17 @@ bool laNamNhuan(int a)
 	}
 
 }
-int tinhChuViHCN(int a, int b)
+int tinhChuViHCN_CSLT(int a, int b)
 {
 	int chuvi = (a+b)*2;
 	return chuvi;
 }
-int tinhDienTichHCN(int a, int b)
+int tinhDienTichHCN_CSLT(int a, int b)
 {
 	int dientich = a*b;
 	return dientich;
 }
-void inHCN(int a,int b)
+void inHCN_CSLT(int a,int b)
 {
 	for (int i = 1; i <= a; i++)
 	{
@@ -786,29 +834,29 @@ void inHCN(int a,int b)
 		}
 	}
 }
-double tinhKhoangCachHT(int a, int b, int c, int d)
+double tinhKhoangCachHT_CSLT(int a, int b, int c, int d)
 {
 	double khoangcach = sqrt(pow(b - a, 2) + pow(d - c, 2));
 	return khoangcach;
 }
-double tinhBanKinhHT(int a, int b, int c, int d)
+double tinhBanKinhHT_CSLT(int a, int b, int c, int d)
 {
-	double bankinh = (tinhKhoangCachHT(a, b, c, d) / 2);
+	double bankinh = (tinhKhoangCachHT_CSLT(a, b, c, d) / 2);
 	return bankinh;
 }
-double tinhChuViHT(int a)
+double tinhChuViHT_CSLT(int a)
 {
 	const double pi= 3.14;
 	double chuvi = pi*a;
 		return chuvi;
 }
-double tinhDienTichHT(int a)
+double tinhDienTichHT_CSLT(int a)
 {
 	const double pi = 3.14;
 	double dientich = a*a*pi;
 	return dientich;
 }
-int tinhToHop(int a)
+int tinhToHop_CSLT(int a)
 {
 	int tohop=1;
 	for (int i = 1; i <= a; i++)
@@ -817,7 +865,7 @@ int tinhToHop(int a)
 	}
 	return tohop;
 }
-double tinhToHopNChapK(int a, int b)
+double tinhToHopNChapK_CSLT(int a, int b)
 {
 	double tohopN=1.0,tohopK=1.0,tohopNchapK=1.0,tohopNK=1.0;
 	for (int i = 1; i <= a; i++)
@@ -847,3 +895,108 @@ double tinhToHopNChapK(int a, int b)
 	tohopNchapK = (tohopN) / (tohopK*tohopNK);
 	return tohopNchapK;
 }
+//void tinhTienLuong_CSLT() {
+//	int ngay, cong, luong;
+//	cout << "Tien cong la: \n";
+//	cin >> cong;
+//	cout << "Ngay lam viec la: \n";
+//	cin >> ngay;
+//	luong = cong * ngay;
+//	cout << "Luong la: " << luong << endl;
+//}
+//void tinhBK_CV_Hinhtron_CSLT() {
+//	int bk;
+//	double cv, dt;
+//	const double pi = 3.14;
+//
+//	cout << "Ban kinh hinh tron la: ";
+//	cin >> bk;
+//
+//	cv = 2 * pi*bk;
+//	dt = bk * bk*pi;
+//
+//	cout << "Chu vi hinh tron: " << cv << endl;
+//	cout << "Dien tich hinh tron: " << dt << endl;
+//}
+//void tinhDT_TamGiac_CSLT() {
+//	double a, s, b, c, p;
+//
+//	cout << "Ba canh cua tam giac la: ";
+//	cin >> a >> b >> c;
+//
+//	p = (a + b + c) / 2;
+//	s = sqrt(p*(p - a)*(p - b)*(p - c));
+//
+//	cout << "Dien tich cua tam giac la: " << s << endl;
+//}
+//void tinhKC_2diem_CSLT() {
+//	double x1, x2, y1, y2, d;
+//
+//	cout << "Nhap vao toa do diem A: ";
+//	cin >> x1 >> y1;
+//	cout << "Nhap vao toa do diem B: ";
+//	cin >> x2 >> y2;
+//
+//	d = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+//
+//	cout << fixed << setprecision(2) << "Khoang  cach giua 2 diem A va B la: " << d << endl;
+//}
+//void tinh_Chieudai_String_CSLT() {
+//	string s, dai;
+//
+//	cout << "Nhap vao chuoi ky tu: ";
+//	getline(cin, s);
+//
+//
+//
+//	cout << "Chieu dai cua chuoi la: " << s.length();
+//
+//}
+//void nhiphan_thapphan_CSLT() {
+//	int n, tong = 0, chuso, i = 0, dem = 1, bien;
+//
+//	cout << "Nhap vao so nhi phan: ";
+//	cin >> n;
+//
+//	bien = n;
+//	while (bien > 0)
+//	{
+//		bien = bien / 10;
+//		dem++;
+//	}
+//	while (i <= (dem - 1))
+//	{
+//		int chuso = 0;
+//		chuso = n % 10;
+//		tong += (chuso * pow(2, i));
+//		n /= 10;
+//		i++;
+//	}
+//	cout << "Tong so thap phan la: " << tong << endl;
+//}
+//void bang_Cuuchuong()_CSLT {
+//	int x, y;
+//	cout << "x: "; cin >> x;
+//	cout << "y: "; cin >> y;
+//	for (int i = 1; i <= x; i++)
+//	{
+//		for (int j = 1; j <= y; j++)
+//		{
+//			cout << i * j << "\t";
+//		}
+//		cout << endl;
+//	}
+//}
+//void doanSo_tuonglai_CSLT() {
+//	srand(time(0));
+//	int doan, n, dapan, traloi;
+//	dapan = ((1 + rand()) % 10);
+//	cout << "Cau tra loi la: "; cin >> traloi;
+//	if (traloi == dapan)
+//	{
+//		cout << "Tra loi dung roi.Dap an la: " << dapan << endl;
+//	}
+//	else {
+//		cout << "Ban da doan sai.Hay thu lai ! Dap an la: " << dapan << endl;
+//	}
+//}
